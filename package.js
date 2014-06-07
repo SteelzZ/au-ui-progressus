@@ -14,7 +14,6 @@ Package.on_use(function (api, where) {
         'assets/images/mac.jpg',
         'assets/images/loader.gif',
 
-        //'client/styles/bootstrap.min.css',
         'client/styles/bootstrap-theme.css',
         'client/styles/main.css',
 
