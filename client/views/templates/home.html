@@ -1,0 +1,100 @@
+<template name="home">
+    <!-- Header -->
+    <header data-au-image="{{path}}header" id="head" style="background:url('{{loadImg 'header' '1900x1080' path}}') no-repeat center center;">
+        <div class="container">
+            <div class="row">
+                <h1 class="lead" data-au-label="home.slogan">{{c 'home.slogan'}}</h1>
+                <p class="tagline" data-type="wysihtml5" data-au-label="home.tagline">{{{c 'home.tagline'}}}</p>
+                <p><a class="btn btn-default btn-lg" role="button" data-au-label="home.first.button">{{c 'home.first.button'}}</a> <a class="btn btn-action btn-lg" role="button" data-au-label="home.second.button">{{c 'home.second.button'}}</a></p>
+            </div>
+        </div>
+    </header>
+    <!-- /Header -->
+
+    <!-- Intro -->
+    <div class="container text-center">
+        <br> <br>
+        <h2 class="thin" data-au-label="home.why">{{c 'home.why'}}</h2>
+        <p class="text-muted" data-au-label="home.why.details">{{c 'home.why.details'}}</p>
+    </div>
+    <!-- /Intro-->
+
+    <!-- Highlights - jumbotron -->
+    <div class="jumbotron top-space">
+        <div class="container">
+            
+            <h3 class="text-center thin" data-au-label="home.reasons">{{c 'home.reasons'}}</h3>
+            
+            <div class="row">
+                <div class="col-md-3 col-sm-6 highlight">
+                    <div class="h-caption"><h4><i class="fa fa-cogs fa-5"></i><span data-au-label="home.reason.one">{{c 'home.reason.one'}}</span></h4></div>
+                    <div class="h-body text-center">
+                        <p data-type="wysihtml5" data-au-label="home.reason.one.description">{{{c 'home.reason.one.description'}}}</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 highlight">
+                    <div class="h-caption"><h4><i class="fa fa-flash fa-5"></i><span data-au-label="home.reason.two">{{c 'home.reason.two'}}</span></h4></div>
+                    <div class="h-body text-center">
+                        <p data-type="wysihtml5" data-au-label="home.reason.two.description">{{c 'home.reason.two.description'}} </p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 highlight">
+                    <div class="h-caption"><h4><i class="fa fa-heart fa-5"></i><span data-au-label="home.reason.three">{{c 'home.reason.three'}}</span></h4></div>
+                    <div class="h-body text-center">
+                        <p data-type="wysihtml5" data-au-label="home.reason.three.description">{{c 'home.reason.three.description'}}</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 highlight">
+                    <div class="h-caption"><h4><i class="fa fa-smile-o fa-5"></i><span data-au-label="home.reason.four">{{c 'home.reason.four'}}</span></h4></div>
+                    <div class="h-body text-center">
+                        <p data-type="wysihtml5" data-au-label="home.reason.four.description">{{c 'home.reason.four.description'}}</p>
+                    </div>
+                </div>
+            </div> <!-- /row  -->
+        
+        </div>
+    </div>
+    <!-- /Highlights -->
+    <!-- container -->
+    <div class="container">
+
+        <h2 class="text-center top-space" data-au-label="home.faq">{{c 'home.faq'}}</h2>
+        <br>
+
+        <div class="row" data-au-record="{{path}}faq">
+            {{#with recordByPlace path 'faq'}}
+                {{#each sorted children _id}}
+                    {{#with this}}
+                        <div data-au-sort-order="{{_id}}" data-au-deletable="{{_id}}" class="col-sm-6">
+                            <h3 data-au-label="{{_id}}[title]">{{c '[title]' _id}}</h3>
+                            <p data-type="wysihtml5" data-au-label="{{_id}}[answer]">{{{c '[answer]' _id}}}</p>
+                        </div>
+                    {{/with}}
+                {{/each}}
+            {{/with}}
+        </div> <!-- /row -->
+
+
+        <div class="jumbotron top-space">
+            <h4 data-au-label="home.learn.more">{{c 'home.learn.more'}}</h4>
+            <p class="text-right"><a class="btn btn-primary btn-large" data-au-label="home.learn.more.button">{{c 'home.learn.more.button'}} »</a></p>
+        </div>
+
+    </div>  <!-- /container -->
+    <!-- Social links. @TODO: replace by link/instructions in template -->
+    <section id="social">
+        <div class="container">
+            <div class="wrapper clearfix">
+                <!-- AddThis Button BEGIN -->
+                <div class="addthis_toolbox addthis_default_style">
+                <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+                <a class="addthis_button_tweet"></a>
+                <a class="addthis_button_linkedin_counter"></a>
+                <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+                </div>
+                <!-- AddThis Button END -->
+            </div>
+        </div>
+    </section>
+    <!-- /social links -->
+</template>

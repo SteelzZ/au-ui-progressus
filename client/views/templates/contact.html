@@ -1,0 +1,71 @@
+<template name="contact">
+    <header id="head" class="secondary"></header>
+
+    <!-- container -->
+    <div class="container">
+
+        <ol class="breadcrumb">
+            <li><a href="{{nav 'brand' 'href'}}" data-au-nav="brand" data-au-label="home">{{c 'home'}}</a></li>
+            <li class="active" data-au-label="contact">{{c 'contact'}}</li>
+        </ol>
+
+        <div class="row">
+            
+            <!-- Article main content -->
+            <article class="col-sm-9 maincontent">
+                <header class="page-header">
+                    <h1 class="page-title" data-au-label="contact_us">{{c 'contact_us'}}</h1>
+                </header>
+                
+                <p data-type="wysihtml5" data-au-label="{{path}}desc">{{{c 'desc' path}}}</p>
+                <br>
+                    <form>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <input class="form-control" type="text" placeholder="{{c 'placeholder_name' path}}" data-au-label="{{path}}placeholder_name">
+                            </div>
+                            <div class="col-sm-4">
+                                <input class="form-control" type="text" placeholder="Email">
+                            </div>
+                            <div class="col-sm-4">
+                                <input class="form-control" type="text" placeholder="Phone">
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <textarea placeholder="Type your message here..." class="form-control" rows="9"></textarea>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <label class="checkbox"><input type="checkbox"> Sign up for newsletter</label>
+                            </div>
+                            <div class="col-sm-6 text-right">
+                                <input class="btn btn-action" type="submit" value="Send message">
+                            </div>
+                        </div>
+                    </form>
+
+            </article>
+            <!-- /Article -->
+            
+            <!-- Sidebar -->
+            <aside class="col-sm-3 sidebar sidebar-right">
+
+                <div class="widget" data-au-record="{{path}}address">
+                    {{#with recordByPlace path 'address'}}
+                        <h4 data-au-label="address">{{c 'address'}}:</h4>
+                        <address data-au-label="{{_id}}[address]">{{c '[address]' _id}}</address>
+                        <h4 data-au-label="phone">{{c 'phone'}}:</h4>
+                        <address data-au-label="{{_id}}[phone]">{{c '[phone]' _id}}</address>
+                    {{/with}}
+                </div>
+
+            </aside>
+            <!-- /Sidebar -->
+
+        </div>
+    </div>  <!-- /container -->
+</template>

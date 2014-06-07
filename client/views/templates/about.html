@@ -1,0 +1,43 @@
+<template name="about">
+    <header id="head" class="secondary"></header>
+
+    <!-- container -->
+    <div class="container">
+
+        <ol class="breadcrumb">
+            <li><a href="{{nav 'brand' 'href'}}" data-au-nav="brand" data-au-label="home">{{c 'home'}}</a></li>
+            <li class="active" data-au-label="about">{{c 'about'}}</li>
+        </ol>
+
+        <div class="row">
+            
+            <!-- Article main content -->
+            <article class="col-sm-8 maincontent">
+                <header class="page-header">
+                    <h1 class="page-title" data-au-label="{{path}}about_us">{{c 'about_us' path}}</h1>
+                </header>
+                <div data-type="wysihtml5" data-au-label="{{path}}about_us_text">{{{c 'about_us_text' path}}}</div>
+                
+            </article>
+            <!-- /Article -->
+            
+            <!-- Sidebar -->
+            <aside class="col-sm-4 sidebar sidebar-right">
+
+                <div class="widget">
+                    <h4>Vacancies</h4>
+                    <ul class="list-unstyled list-spaces" data-au-record="{{path}}vacancies">
+                        {{#with recordByPlace path 'vacancies'}}
+                            {{#each sorted children _id}}
+                                <li data-au-sort-order="{{_id}}" data-au-deletable="{{_id}}"><a href="{{nav _id 'href'}}" data-au-nav="{{_id}}" data-au-label="{{_id}}[title]">{{c '[title]' _id}}</a><br><span class="small text-muted" data-au-label="{{_id}}[desc]">{{c '[desc]' _id}}</span></li>
+                            {{/each}}
+                        {{/with}}
+                    </ul>
+                </div>
+
+            </aside>
+            <!-- /Sidebar -->
+
+        </div>
+    </div>  <!-- /container -->
+</template>

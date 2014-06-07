@@ -1,0 +1,150 @@
+<head>
+    <title></title>
+    <link rel="shortcut icon" href="/packages/au-ui-progressus/assets/images/gt_favicon.png">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="stylesheet" media="screen" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
+</head>
+
+<body></body>
+
+<template name="layout">
+    {{> cmsinn_controls_left}}
+
+    <!-- Fixed navbar -->
+    <div class="navbar navbar-inverse navbar-fixed-top headroom" >
+        <div class="container">
+            <div class="navbar-header">
+                <!-- Button for smallest screens -->
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+                <a class="navbar-brand" href="{{nav 'brand' 'href'}}" data-au-nav="brand"><img data-au-image="logo" src="{{loadImg 'logo' '158x40' ''}}" alt="Goooo{{c 'logo_alt' path}}" data-au-label="{{path}}logo_alt"></a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right" data-au-record="languages">
+                {{#with recordByPlace '' 'languages'}}
+                    {{#each sorted children _id}}
+                        {{#with this}}
+                            {{#if children}}
+                                <li data-au-sort-order="{{_id}}" data-au-deletable="{{_id}}" class="dropdown">
+                                    <a class="dropdown-toggle" data-toggle="dropdown" data-au-nav="{{_id}}" href="{{nav _id 'href'}}"><span data-au-label="{{_id}}[title]">{{c '[title]' _id}}</span><strong class="caret"></strong></a>
+                                    <ul class="dropdown-menu" data-au-sortable="true">
+                                        {{#each sorted children _id}}
+                                            {{#with this}}
+                                                <li data-au-deletable="{{_id}}" data-au-sort-order="{{_id}}"><a data-au-locale="{{_id}}" data-au-nav="{{_id}}" href="{{nav _id 'href'}}" data-au-label="{{_id}}[title]">{{c '[title]' _id}}</a></li>
+                                            {{/with}}
+                                        {{/each}}    
+                                    </ul>
+                                </li> 
+                            {{else}}
+                                <li data-au-sort-order="{{_id}}" data-au-deletable="{{_id}}" class="{{nav _id 'isActive'}}">
+                                    <a data-au-locale="{{_id}}" data-au-nav="{{_id}}" href="{{nav _id 'href'}}" data-au-label="{{_id}}[title]">{{c 'title' _id}}</a>
+                                </li>
+                            {{/if}}
+                        {{/with}}
+                    {{/each}}
+                {{/with}}
+                </ul>
+                <ul class="nav navbar-nav pull-right" data-au-record="top_menu">
+                    {{#with recordByPlace '' 'top_menu'}}
+                        {{#each sorted children _id}}
+                            {{#with this}}
+                                {{#if children}}
+                                    <li data-au-sort-order="{{_id}}" data-au-deletable="{{_id}}" class="dropdown">
+                                        <a class="dropdown-toggle" data-toggle="dropdown" data-au-nav="{{_id}}" href="{{nav _id 'href'}}"><span data-au-label="{{_id}}[title]">{{c '[title]' _id}}</span><strong class="caret"></strong></a>
+                                        <ul class="dropdown-menu" data-au-sortable="true">
+                                            {{#each sorted children _id}}
+                                                {{#with this}}
+                                                    <li data-au-deletable="{{_id}}" data-au-sort-order="{{_id}}"><a data-au-nav="{{_id}}" href="{{nav _id 'href'}}" data-au-label="{{_id}}[title]">{{c '[title]' _id}}</a></li>
+                                                {{/with}}
+                                            {{/each}}    
+                                        </ul>
+                                    </li>
+                                {{else}}
+                                    <li data-au-sort-order="{{_id}}" data-au-deletable="{{_id}}" class="{{nav _id 'isActive'}}">
+                                        <a data-au-nav="{{_id}}" href="{{nav _id 'href'}}" data-au-label="{{_id}}[title]">{{c 'title' _id}}</a>
+                                    </li>
+                                {{/if}}
+                            {{/with}}
+                        {{/each}}
+                    {{/with}}
+                </ul>
+            </div><!--/.nav-collapse -->
+        </div>
+    </div> 
+    <!-- /.navbar -->
+    {{> yield}}
+
+    <footer id="footer" class="top-space">
+        <div class="footer1">
+            <div class="container">
+                <div class="row">
+                    
+                    <div class="col-md-3 widget">
+                        <h3 class="widget-title" data-au-label="footer.contact">{{c 'footer.contact'}}</h3>
+                        <div class="widget-body" data-au-record="{{path}}contacts_at_bottom">
+                            {{#with recordByPlace path 'contacts_at_bottom'}}
+                                <address data-au-label="{{_id}}[address]">{{c '[address]' _id}}</address>
+                                <address data-au-label="{{_id}}[phone]">{{c '[phone]' _id}}</address>
+                                <address data-au-label="{{_id}}[email]">{{c '[email]' _id}}</address>
+                            {{/with}}  
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 widget">
+                        <h3 class="widget-title" data-au-label="footer.followme">{{c 'footer.followme'}}</h3>
+                        <div class="widget-body">
+                            <p class="follow-me-icons">
+                                <a href="{{nav 'twitter' 'href'}}" data-au-nav="twitter"><i class="fa fa-twitter fa-2"></i></a>
+                                <a href="{{nav 'dribble' 'href'}}" data-au-nav="dribble"><i class="fa fa-dribbble fa-2"></i></a>
+                                <a href="{{nav 'github' 'href'}}" data-au-nav="github"><i class="fa fa-github fa-2"></i></a>
+                                <a href="{{nav 'facebook' 'href'}}" data-au-nav="facebook"><i class="fa fa-facebook fa-2"></i></a>
+                            </p>    
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 widget">
+                        <h3 class="widget-title" data-au-label="footer.text.widget">{{c 'footer.text.widget'}}</h3>
+                        <div class="widget-body" data-type="wysihtml5" data-au-label="footer.text.widget.text">{{{c 'footer.text.widget.text'}}}</div>
+                    </div>
+
+                </div> <!-- /row of widgets -->
+            </div>
+        </div>
+
+        <div class="footer2">
+            <div class="container">
+                <div class="row">
+                    
+                    <div class="col-md-6 widget">
+                        <div class="widget-body">
+                            <p class="simplenav" data-au-record="bottom_menu">
+                                {{#with recordByPlace '' 'top_menu'}}
+                                    {{#each sorted children _id}}
+                                        {{#with this}}
+                                            {{#if children}}
+
+                                            {{else}}
+                                                <a data-au-sort-order="{{_id}}" data-au-deletable="{{_id}}" data-au-nav="{{_id}}" href="{{nav _id 'href'}}" data-au-label="{{_id}}[title]">{{c 'title' _id}}</a> |
+                                            {{/if}}
+                                        {{/with}}
+                                    {{/each}}
+                                {{/with}}
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 widget">
+                        <div class="widget-body">
+                            <p class="text-right" data-type="wysihtml5" data-au-label="footer.copy">{{{c 'footer.copy'}}}</p>
+                        </div>
+                    </div>
+
+                </div> <!-- /row of widgets -->
+            </div>
+        </div>
+    </footer>   
+</template>
