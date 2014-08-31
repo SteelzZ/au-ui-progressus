@@ -13,10 +13,12 @@
 <body></body>
 
 <template name="layout">
-    {{> cmsinn_controls_left}}
+    {{#if currentUser}}
+        {{> cmsinn_controls_left}}
+    {{/if}}
 
     <!-- Fixed navbar -->
-    <div class="navbar navbar-inverse navbar-fixed-top headroom" >
+    <div class="navbar navbar-inverse navbar-fixed-top headroom">
         <div class="container">
             <div class="navbar-header">
                 <!-- Button for smallest screens -->
@@ -41,7 +43,7 @@
                                 </li> 
                             {{else}}
                                 <li data-au-sort-order="{{_id}}" data-au-deletable="{{_id}}" class="{{nav _id 'isActive'}}">
-                                    <a data-au-locale="{{_id}}" data-au-nav="{{_id}}" href="{{nav _id 'href'}}" data-au-label="{{_id}}[title]">{{c 'title' _id}}</a>
+                                    <a data-au-locale="{{_id}}" data-au-nav="{{_id}}" href="{{nav _id 'href'}}" data-au-label="{{_id}}[title]">{{c '[title]' _id}}</a>
                                 </li>
                             {{/if}}
                         {{/with}}
@@ -58,14 +60,14 @@
                                         <ul class="dropdown-menu" data-au-sortable="true">
                                             {{#each sorted children _id}}
                                                 {{#with this}}
-                                                    <li data-au-deletable="{{_id}}" data-au-sort-order="{{_id}}"><a data-au-nav="{{_id}}" href="{{nav _id 'href'}}" data-au-label="{{_id}}[title]">{{c '[title]' _id}}</a></li>
+                                                    <li data-au-deletable="{{_id}}" data-au-sort-order="{{_id}}"><a data-au-nav="{{_id}}[menu_url]" href="{{nav '[menu_url]' 'href' _id}}" data-au-label="{{_id}}[title]">{{c '[title]' _id}}</a></li>
                                                 {{/with}}
                                             {{/each}}    
                                         </ul>
                                     </li>
                                 {{else}}
                                     <li data-au-sort-order="{{_id}}" data-au-deletable="{{_id}}" class="{{nav _id 'isActive'}}">
-                                        <a data-au-nav="{{_id}}" href="{{nav _id 'href'}}" data-au-label="{{_id}}[title]">{{c 'title' _id}}</a>
+                                        <a data-au-nav="{{_id}}[menu_url]" href="{{nav '[menu_url]' 'href' _id}}" data-au-label="{{_id}}[title]">{{c '[title]' _id}}</a>
                                     </li>
                                 {{/if}}
                             {{/with}}

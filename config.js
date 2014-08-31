@@ -22,3 +22,13 @@ if (Meteor.isClient) {
         }
     });
 }
+
+if (Meteor.isServer) {
+    CmsInn.configure({
+        plugins: {
+            versioning:{
+                insecure : true
+            }
+        }
+    });
+}
